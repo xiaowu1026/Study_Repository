@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <script src="js/vue.js"></script>
+<body>
+    <div id="app">
+        {{package1.length}}
+        {{prices}}
+    </div>
+    <script>
+        vue=new Vue({
+            el:"#app",
+            data:{
+                package1:[{
+                    goodsName:"salt",
+                    price:20
+                },
+                {
+                    goodsName:"wine",
+                    price:50
+                },
+                {
+                    goodsName:"oil",
+                    price:40
+                }]
+            },
+            computed:{
+                prices:function(){
+                    var tempPrice=0;
+                    for(var i=0;i<this.package1.length;i++){
+                        console.log(this.package1[i].price);
+                        tempPrice+=this.package1[i].price;
+                    }
+                    console.log(tempPrice);
+                    return tempPrice;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

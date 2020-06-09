@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>vue_1</title>
+    </head>
+    <script src="js/vue.js"></script>
+    <body>
+        <div id="app">
+            <input type="text" v-model="name" placeholder="input whaterver">
+            <Span v-pre><h1>{{ name }}</h1></Span>
+        </div>
+        <script>
+            var app=new Vue({
+                el:'#app',
+                data:{
+                    name:'299'
+                }
+            })
+        </script>
+    </body>
+</html>

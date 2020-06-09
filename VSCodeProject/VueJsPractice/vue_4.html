@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="js/vue.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<body>
+    <div id="app" v-cloak>
+     <div v-if="list.length" >
+               <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>商品名称</th>
+                        <th>商品单价</th>
+                        <th>购买数量</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item,index) in list">
+                        <td>{{index+1}}</td>
+                        <td>{{item.goodsName}}</td>
+                        <td>{{item.price}}</td>
+                        <td><button @click="handleReduce(index)" :disable="item.count===1">-</button>{{item.count}}
+                            <button @click="handleAdd(index)">+</button></td>
+                        <td><button @click="handleRemove(index)">移除</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>总价：￥{{totalPrice}}</div> 
+        </div>
+        <div v-else>购物车为空</div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                list: [{
+                    id: 1,
+                    goodsName: "iphone",
+                    price: 7000,
+                    count: 1
+                }, {
+                    id: 2,
+                    goodsName: "ipad",
+                    price: 5000,
+                    count: 1
+                }, {
+                    id: 3,
+                    goodsName: "Mac",
+                    price: 10000,
+                    count: 1
+                }],
+                temp:1
+            },
+           
+            computed: {
+                totalPrice:function () {
+                    var totalPrice = 0
+                    for (var i = 0; i < this.list.length; i++) {
+                        totalPrice += this.list[i].price * this.list[i].count;
+                    }
+                    return totalPrice;
+                }
+            },
+            methods: {
+                handleAdd: function (index) {
+                    this.list[index].count++;
+                },
+                handleReduce: function (index) {
+                    if (this.list[index].count === 1) return;
+                    this.list[index].count--;
+                },
+                handleRemove: function (index) {
+                    this.list.splice(index, 1);
+                }
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>
