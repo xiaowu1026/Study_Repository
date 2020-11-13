@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>vue_5</title>
+    </head>
+    <script src="js/vue.js"></script>
+<body>
+    <!-- <ul id="app">
+        <input   type="text" v-model="searchTtext"/>
+        <li v-for="(item,index) in items | filterBy searchTtext " class="item-{{index}}">
+           {{index}} - {{parentMessage}} {{item.msg}}
+        </li>
+    </ul>
+    <script>
+        var app=new Vue({
+            el:"#app",
+            data:{
+                searchTtext:'',
+                parentMessage:'books',
+                items:[
+                    {msg:'VueJs'},
+                    {msg:'ReactJs'}
+                ]
+            }
+        });
+    </script> -->
+
+        <div id="box">
+        <input type="text" v-model="a">
+        <ul>
+        <li v-for="val in arr | filterBy a">
+        {{val}}
+        </li>
+        </ul>
+        </div>
+        <script>
+        
+        var vm=new Vue({
+        data:{
+        arr:['width','height','background','orange'],
+        a:''
+        },
+        methods:{
+        
+        }
+        }).$mount('#box');
+    </script>
+</body>
+</html>
